@@ -4,7 +4,7 @@ Prototype for the case study *Reimagining the Employee Experience* (Carelon Glob
 
 **Krishna Singha · PGP41369 · IIM Lucknow**
 
-**Live prototype:** https://YOUR-USERNAME.github.io/carelon-journey-prototype/
+**Live prototype:** https://ksingha.github.io/carelon-journey-prototype/
 
 ## What it shows
 
