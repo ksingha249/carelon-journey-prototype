@@ -130,7 +130,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;back
   <section class="stage" aria-live="polite"><div class="stagebar"><span id="chan" class="chan"></span><span id="pos"></span></div><div id="dev" style="width:100%;display:flex;justify-content:center"></div></section>
   <aside class="panel" id="panel"></aside>
 </main>
-<p class="note">Prototype with sample people, dates and figures, built to match the case deck. Every action that changes a record opens the owning function's own system: the journey layer only shows status and routes the employee.</p>
+<p class="note">Clickable prototype with sample people, dates and figures, built to match the case deck. It shows the intended experience and is not connected to Carelon systems. Every action that changes a record opens the owning function's own system: the journey layer only shows status and routes the employee.</p>
 <script>
 {
 const $=s=>document.querySelector(s);
@@ -176,8 +176,8 @@ const SC=[
  {id:'leaving',tab:'Neha · Leaving',sub:'Must',chan:'Teams, then verified link after exit',dev:'phone',ini:'N',name:'Neha, 27',role:'Claims associate · last day Thu 31 Dec',
   bef:['5 contacts across HR, IT, Admin and Payroll','Worries whether final wages will arrive','After exit, only a general HR inbox'],
   aft:['Every exit step on one card','A legal clock tracks final wages','Status after exit with a verified link, no login'],
-  feats:[['Leaving journey','Exit steps across five functions','Must','188'],['Legal clock','Final wages tracked to the 2-working-day window','Must','part of F2']],
-  mets:[['95%','of leavers paid within the legal window'],['98%','access removed on the last day']],
+  feats:[['Leaving journey','Exit steps across five functions','Must','188'],['Legal clock','Final wages tracked to the 2-working-day window (scope per Legal)','Must','part of F2']],
+  mets:[['95%','of in-scope leavers paid in the statutory window'],['98%','access removed on the last day']],
   tryit:'Book a laptop return slot, then switch to "After exit" to see what Neha sees without a company login.'},
  {id:'owner',tab:'Rakesh · Function owner',sub:'Compact',chan:'Owner console',dev:'desk',ini:'R',name:'Rakesh, 41',role:'HR operations lead · owns HR\'s steps',
   bef:['Gets tickets meant for other teams','Blamed when day 1 fails for any reason','No view of hand-offs to IT or Admin'],
@@ -203,12 +203,12 @@ function rJoin(){const s=st.join;
   ['offer','Offer & documents','HR · Done','ok','Offer signed 18 Nov. Documents verified in the HR system.'],
   ['laptop','Laptop & access','IT · Done','ok','Laptop HYD-L-2231 allocated; claims system access created on 3 Dec in IT\'s service desk.'],
   ['badge','Badge & seat','Admin · Done','ok','Badge printed; seat 4F-112 on the secure floor.'],
-  ['cab','Night cab 8:15pm',s.cab?'Admin · Confirmed':'Admin · Confirm',s.cab?'ok':'ok','Pick-up 8:15pm from Kukatpally, drop 6:30am. Booked in Admin\'s transport system.'],
-  ['learn','Day-1 learning plan','L&D · 3 modules','ok','Claims basics, Data privacy, Night-shift safety. Assigned in the LMS.'],
+  ['cab','Night cab 8:15pm',s.cab?'Admin · Booked, confirmed':'Admin · Booked · tap to confirm',s.cab?'ok':'ok','Pick-up 8:15pm from Kukatpally, drop 6:30am. Booked in Admin\'s transport system.'],
+  ['learn','Day-1 learning plan','L&D · Assigned, 3 modules','ok','Claims basics, Data privacy, Night-shift safety. Assigned in the LMS.'],
   ['bank','Bank & UAN details',s.bank?'Payroll · Done':'Payroll · due 12 Dec',s.bank?'ok':'w','Needed for your first salary. You enter these in Payroll\'s own form; the journey layer never stores them.'],
   ['bg','Background check',s.bg?'Vendor · Clear':'Vendor · in progress',s.bg?'ok':'w','Education check pending with the vendor. You will get an SMS if anything is needed from you.']];
  const ready=5+(s.bank?1:0)+(s.bg?1:0);
- let h=`<div class="sbar"><span>21:00</span><span>5G ▮▮▮</span></div><div class="ph"><b>Your joining journey</b><span>Day 1: Mon 7 Dec, 9pm shift</span></div><div class="body"><div class="prog"><span>${ready} of 7 ready</span><span>${ready===7?'All set for day 1':(7-ready)+' to go'}</span></div><div class="bar"><i style="width:${ready/7*100}%"></i></div>`;
+ let h=`<div class="sbar"><span>21:00</span><span>5G ▮▮▮</span></div><div class="ph"><b>Your joining journey</b><span>Day 1: Mon 7 Dec, 9pm shift</span></div><div class="body"><div class="prog"><span>${ready} of 7 ready</span><span>${ready===7?'All set for day 1':(7-ready)+' pending'}</span></div><div class="bar"><i style="width:${ready/7*100}%"></i></div><div style="font-size:11px;color:#5e5970;margin:-6px 0 10px">Ready = the owning team has finished its part</div>`;
  for(const r of rows){const op=s.open===r[0];const need=(r[0]==='cab'&&!s.cab)||(r[0]==='bank'&&!s.bank);
   h+=`<button class="row ${r[3]==='w'?'wait':''} ${op?'open':''}" data-a="jopen" data-v="${r[0]}" aria-expanded="${op}">${dot(r[3]==='ok'?'ok':'w',r[3]==='ok'?'✓':'…')}<span><b>${r[1]}</b><small class="${need?'cta':''}">${r[2]}</small></span></button>`;
   if(op){h+=`<div class="det">${r[4]}<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">`;
@@ -278,7 +278,7 @@ function rOwn(){const s=st.own;
  return deskWrap('Journey console · HR operations',['My steps','Template','Reports'],b)}
 
 /* ---------- 7 impact ---------- */
-function rImp(){const M=[['Day-1 readiness',83,85,70,'%'],['Final wages in legal window',93,95,null,'%'],['Answered first time by a card',57,60,null,'%'],['Manager follow-ups cut',46,50,0,'%'],['Follow-ups at day 30 cut',24,30,0,'%']];
+function rImp(){const M=[['Day-1 readiness',83,85,70,'%'],['Final wages in statutory window',93,95,null,'%'],['Answered first time by a card',57,60,null,'%'],['Manager follow-ups cut',46,50,0,'%'],['Follow-ups at day 30 cut',24,30,0,'%']];
  let b=`<h2>Pilot read-out · week 20 of 26</h2><div class="sub">Hyderabad site vs a similar unit · sample numbers for the prototype</div><div class="kpis"><div class="kpi" style="background:linear-gradient(120deg,#5009B5,#2A0569)"><b style="color:#fff">64%</b><span style="color:#e5dbfa">clean-journey rate (baseline 41%)</span></div><div class="kpi"><b>212</b><span>journeys with a response</span></div><div class="kpi"><b>47%</b><span>survey response (fallback below 40%)</span></div></div><div class="h4" style="margin-top:4px">PERSONA TARGETS · bar = now, red line = target</div>`;
  for(const m of M)b+=`<div class="mbar"><div><div style="display:flex;justify-content:space-between"><span>${m[0]}</span><b>${m[1]}${m[4]}</b></div><div class="track"><i style="width:${m[1]}%"></i><em style="left:${m[2]}%" title="target"></em></div></div><span class="tag ${m[1]>=m[2]?'t-ok':'t-r'}" style="text-align:center">target ${m[2]}${m[4]}</span></div>`;
  b+=`<div class="h4" style="margin-top:12px">GUARDRAILS · must not worsen</div><div class="kpis">${[['Falling','bypass to old channels'],['2.1%','false "done" steps (max 3%)'],['0','privacy incidents'],['98.6%','access off on last day (min 98%)']].map(g=>`<div class="kpi" style="background:#E0F6F5"><b style="color:#007F7D">${g[0]}</b><span>${g[1]}</span></div>`).join('')}</div><div class="comms" style="background:#FEF3E2"><b style="color:#A86500">◆</b><span><b>Weeks 24–26 decision:</b> on track to <b>continue</b>. Readiness and wages are close to target; guardrails hold. Scale is decided at month 9, attrition read at month 18.</span></div>`;
