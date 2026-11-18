@@ -139,7 +139,7 @@ const st={
   swipe:{step:'alert',out:'06:02',why:'Badge reader not working at Gate 2'},
   ans:{q:'',sel:null,fb:null},
   mgr:{nudged:{},filter:'all',toast:''},
-  leave:{after:false,slot:null,open:null,modal:false},
+  leave:{after:false,slot:null,open:null,modal:false,fb:null},
   own:{tab:'steps',offset:'D-10',toast:''}
 };
 const CARDS=[
@@ -149,37 +149,37 @@ const CARDS=[
  {id:'encash',k:'leave encashment exit settlement final',t:'Leave encashment when you leave',own:'Payroll',rev:'1 Nov 2026',next:'May 2027',pts:['Unused earned leave is paid in your full and final settlement','Your leaving journey shows the amount once Payroll calculates it','Questions go to the Payroll owner, not a general inbox'],act:'Open my leaving journey',sys:'Journey card',ret:'Answers once spread across the exit email chain.'}
 ];
 const SC=[
- {id:'joining',tab:'Priya · Joining',sub:'Must',chan:'Verified page, before day 1',dev:'phone',ini:'P',name:'Priya, 24',role:'Night-shift claims associate, Hyderabad · joins Mon 7 Dec',
+ {id:'joining',tab:'Ayushi · Joining',sub:'Must',chan:'Verified page, before day 1',dev:'phone',ini:'A',name:'Ayushi, 24',role:'Night-shift claims associate, Hyderabad · joins Mon 7 Dec',
   bef:['6–7 contacts to get ready for day 1','Status scattered across emails from 4 teams','Finds out on day 1 that the laptop or cab is missing'],
   aft:['One card with every step, owner and due date','She confirms only the steps that need her','Gaps shown early, with a named owner'],
-  feats:[['Joining journey','One card across HR, IT, Admin, L&D, Payroll','Must','267'],['Day-1 learning plan','Assigned in the LMS, shown on the card','Should','292']],
+  feats:[['Journey card · joining template','One card across HR, IT, Admin, L&D and Payroll; the learning plan is one of its steps','Must','229']],
   mets:[['85%','day-1 readiness (from 70%)'],['6–7 → 2','contacts to get ready'],['−30%','follow-ups at day 30']],
   tryit:'Open a row to see who owns it. Confirm the night cab, then enter bank details in Payroll\'s own form and watch the card update.'},
- {id:'swipe',tab:'Priya · Missed swipe',sub:'Should',chan:'Teams alert, mirrored by SMS',dev:'phone',ini:'P',name:'Priya, week 2',role:'Missed an out-swipe after a night shift',
+ {id:'swipe',tab:'Ayushi · Missed swipe',sub:'Should',chan:'Teams alert, mirrored by SMS',dev:'phone',ini:'A',name:'Ayushi, week 2',role:'Missed an out-swipe after a night shift',
   bef:['Learns at payslip time that her allowance was cut','Raises a ticket; it bounces between Payroll and T&A','Fix arrives after the cut-off'],
   aft:['Alert within a day, with the payroll cut-off date','One tap into the T&A system\'s own form','Manager approves in T&A; allowance protected'],
   feats:[['Missed-swipe alert','Reads the T&A feed, writes nothing back','Should','1,000']],
   mets:[['Before cut-off','swipes fixed in time'],['Falling','misrouted tickets']],
-  tryit:'Tap Fix now, submit the corrected out-time, then simulate Meera\'s approval.'},
- {id:'answers',tab:'Arjun · Answer cards',sub:'Should',chan:'Teams and intranet search',dev:'desk',ini:'A',name:'Arjun, 29',role:'Hybrid data analyst, Bengaluru',
+  tryit:'Tap Fix now, submit the corrected out-time, then simulate Shruti\'s approval.'},
+ {id:'answers',tab:'Pritam · Answer cards',sub:'Should',chan:'Teams and intranet search',dev:'desk',ini:'P',name:'Pritam, 29',role:'Hybrid data analyst, Bengaluru',
   bef:['Found two versions of the relocation policy','No idea which team owns the answer','Raises a ticket "just in case"'],
   aft:['One current card, with owner and review date','The old version is retired, not left beside it','"Not answered" routes to the owner with context'],
-  feats:[['Answer cards','About 50 owned, reviewed answers','Should','425'],['Targeted comms','Notices only to the sites and shifts affected','Should','708']],
+  feats:[['Answer cards','About 50 owned, reviewed answers','Should','425']],
   mets:[['60%','answered first time by a current card'],['Falling','misrouted tickets']],
   tryit:'Search "relocation" or tap a suggestion. Then answer "Did this help?" with No to see how it is routed.'},
- {id:'manager',tab:'Meera · Team view',sub:'Must',chan:'Teams tab for managers',dev:'desk',ini:'M',name:'Meera, 35',role:'Team lead, claims operations · 9 reports',
+ {id:'manager',tab:'Shruti · Team view',sub:'Must',chan:'Teams tab for managers',dev:'desk',ini:'S',name:'Shruti, 35',role:'Team lead, claims operations · 9 reports',
   bef:['Chases IT and Admin by email for every joiner','Learns about a missing laptop on day 1','Approves the same change in 4 systems'],
   aft:['At-risk steps flagged days ahead, with the owner','One nudge sends the owner full context','Her own steps sit in the same view'],
-  feats:[['Joining and leaving journeys','Manager view of each journey','Must','267 / 188'],['Approvals queue','All manager approvals in one place','R2','121']],
+  feats:[['Journey card','Manager view of each joining and leaving journey','Must','229'],['Approvals queue','All manager approvals in one place','R2','121']],
   mets:[['−50%','manager follow-ups per joiner'],['Improving','on-time hand-offs']],
   tryit:'Filter to At risk, nudge IT about Rahul\'s laptop, and schedule Neha\'s handover.'},
  {id:'leaving',tab:'Neha · Leaving',sub:'Must',chan:'Teams, then verified link after exit',dev:'phone',ini:'N',name:'Neha, 27',role:'Claims associate · last day Thu 31 Dec',
   bef:['5 contacts across HR, IT, Admin and Payroll','Worries whether final wages will arrive','After exit, only a general HR inbox'],
-  aft:['Every exit step on one card','A legal clock tracks final wages','Status after exit with a verified link, no login'],
-  feats:[['Leaving journey','Exit steps across five functions','Must','188'],['Legal clock','Final wages tracked to the 2-working-day window (scope per Legal)','Must','part of F2']],
+  aft:['Every exit step on one card','A legal clock tracks final wages','Status after exit, no login; her feedback improves the next cohort\'s steps'],
+  feats:[['Journey card · leaving template','Exit steps across five functions','Must','229'],['Legal clock','Final wages tracked to the 2-working-day window (scope per Legal)','Must','part of the card']],
   mets:[['95%','of in-scope leavers paid in the statutory window'],['98%','access removed on the last day']],
-  tryit:'Book a laptop return slot, then switch to "After exit" to see what Neha sees without a company login.'},
- {id:'owner',tab:'Rakesh · Function owner',sub:'Compact',chan:'Owner console',dev:'desk',ini:'R',name:'Rakesh, 41',role:'HR operations lead · owns HR\'s steps',
+  tryit:'Book a laptop return slot, then switch to "After exit" to see what Neha sees without a company login, and answer the feedback question that feeds the next cohort.'},
+ {id:'owner',tab:'Umesh · Function owner',sub:'Compact',chan:'Owner console',dev:'desk',ini:'U',name:'Umesh, 41',role:'HR operations lead · owns HR\'s steps',
   bef:['Gets tickets meant for other teams','Blamed when day 1 fails for any reason','No view of hand-offs to IT or Admin'],
   aft:['Sees only the steps HR owns, with due dates','Edits HR\'s steps; other teams\' steps are locked','Hand-off delays are visible, so blame is not'],
   feats:[['Journey compact','Each function keeps the "how"; owners and backups named','Must','base'],['Journey templates','Steps agreed by the council','Must','base']],
@@ -227,7 +227,7 @@ function rSwipe(){const s=st.swipe;let h;
  if(s.step==='alert'){h=`<div class="lock" style="height:100%;display:flex;flex-direction:column"><div class="sbar"><span>10:12</span><span>5G ▮▮▮</span></div><div class="clock">10:12</div><p style="text-align:center;margin:4px 0 20px;opacity:.85">Wednesday 16 December</p><div class="notif"><div class="app"><i></i>Teams · My Journey</div><b style="display:block;margin:6px 0 2px">Missed swipe last night</b><span style="font-size:14px">You swiped in at 20:58 on Tue 15 Dec but there is no out-swipe. Fix it before the payroll cut-off on Sun 20 Dec to keep your night-shift allowance.</span><div style="display:flex;gap:8px;margin-top:10px"><button class="btn sm" data-a="sfix">Fix now</button><button class="btn sm ghost" data-a="sfix">Later</button></div></div><div class="notif" style="opacity:.8"><div class="app"><i style="background:#44B8F3"></i>SMS · CGS-HR</div><span style="font-size:13px">Missed swipe on 15 Dec. Fix by 20 Dec in Teams or the T&A kiosk.</span></div></div>`}
  else{h=`<div class="sbar"><span>10:13</span><span>5G ▮▮▮</span></div><div class="ph" style="background:linear-gradient(120deg,#007F7D,#01BCBA)"><b>Attendance correction</b><span>Time & attendance system</span></div><div class="body">`;
   if(s.step==='form'){h+=`<span class="sys">T&A SYSTEM · opened from the alert</span><label class="f">Date</label><input class="inp" value="Tue 15 Dec · night shift" readonly><label class="f">In-swipe</label><input class="inp" value="20:58 (recorded)" readonly><label class="f" for="out">Out-time</label><select id="out" data-a="sout">${['05:58','06:02','06:15','06:30'].map(t=>`<option ${t===s.out?'selected':''}>${t}</option>`).join('')}</select><label class="f" for="why">Reason</label><select id="why" data-a="swhy">${['Badge reader not working at Gate 2','Forgot to swipe','Left with the team lead'].map(t=>`<option ${t===s.why?'selected':''}>${t}</option>`).join('')}</select><button class="btn full" style="margin-top:14px" data-a="ssub">Submit for approval</button>`}
-  else{const ok=s.step==='ok';h+=`<div class="row ${ok?'':'wait'}">${dot(ok?'ok':'w',ok?'✓':'…')}<span><b>${ok?'Approved by Meera':'Sent to Meera for approval'}</b><small>Out-time ${s.out} · ${s.why}</small></span></div><div class="row">${dot(ok?'ok':'n',ok?'✓':'2')}<span><b>Payroll cut-off Sun 20 Dec</b><small>${ok?'Fixed 4 days early · allowance protected':'4 days left'}</small></span></div>${ok?'':'<button class="btn ghost full" style="margin-top:8px" data-a="sappr">Simulate: Meera approves in T&A</button>'}<button class="btn sm ghost" style="margin-top:12px" data-a="sreset">Replay from the alert</button>`}
+  else{const ok=s.step==='ok';h+=`<div class="row ${ok?'':'wait'}">${dot(ok?'ok':'w',ok?'✓':'…')}<span><b>${ok?'Approved by Shruti':'Sent to Shruti for approval'}</b><small>Out-time ${s.out} · ${s.why}</small></span></div><div class="row">${dot(ok?'ok':'n',ok?'✓':'2')}<span><b>Payroll cut-off Sun 20 Dec</b><small>${ok?'Fixed 4 days early · allowance protected':'4 days left'}</small></span></div>${ok?'':'<button class="btn ghost full" style="margin-top:8px" data-a="sappr">Simulate: Shruti approves in T&A</button>'}<button class="btn sm ghost" style="margin-top:12px" data-a="sreset">Replay from the alert</button>`}
   h+=`</div>`}
  return phoneWrap(h)}
 
@@ -235,7 +235,7 @@ function rSwipe(){const s=st.swipe;let h;
 function rAns(){const s=st.ans;const q=s.q.trim().toLowerCase();
  const res=q?CARDS.filter(c=>q.split(/\s+/).some(w=>w.length>2&&(c.k+' '+c.t.toLowerCase()).includes(w))):[];
  const show=s.sel?CARDS.filter(c=>c.id===s.sel):res;
- let b=`<h2>Ask anything about work here</h2><div class="sub">Answers come from cards each function owns and reviews.</div><div class="comms"><b style="color:#1a6f99">●</b><span><b>Hyderabad · night shift:</b> the Gate 2 badge reader was replaced on Fri 11 Dec. <span style="color:#5e5970">Shown to you because you work night shifts at Hyderabad.</span></span></div><form class="search" data-f="ans"><input class="inp" id="q" placeholder="Try relocation, night allowance, cab" value="${s.q.replace(/"/g,'&quot;')}" aria-label="Search answers"><button class="btn">Search</button></form><div class="sugg">${CARDS.map(c=>`<button data-a="apick" data-v="${c.id}">${c.t}</button>`).join('')}</div>`;
+ let b=`<h2>Ask anything about work here</h2><div class="sub">Answers come from cards each function owns and reviews.</div><form class="search" data-f="ans"><input class="inp" id="q" placeholder="Try relocation, night allowance, cab" value="${s.q.replace(/"/g,'&quot;')}" aria-label="Search answers"><button class="btn">Search</button></form><div class="sugg">${CARDS.map(c=>`<button data-a="apick" data-v="${c.id}">${c.t}</button>`).join('')}</div>`;
  if((q||s.sel)&&!show.length)b+=`<div class="ac"><b>No card yet for "${s.q.replace(/</g,'&lt;')}".</b><p class="meta">Your question goes to the right owner with context, and becomes a card if others ask it too.</p></div>`;
  for(const c of show)b+=`<div class="ac"><h3>${c.t}</h3><div class="meta">Owner: ${c.own} · Reviewed ${c.rev} · Next review ${c.next}</div><ul>${c.pts.map(p=>`<li>${p}</li>`).join('')}</ul><button class="btn sm">${c.act} →</button> <span style="font-size:12px;color:#5e5970">opens the ${c.sys}</span><div class="retired">✓ ${c.ret}</div><div style="margin-top:10px;font-size:13px">Did this answer your question? <button class="btn sm ghost" data-a="afb" data-v="y">Yes</button> <button class="btn sm ghost" data-a="afb" data-v="n">No</button></div>${s.fb==='y'?'<div class="wtoast">Thanks. Counted as answered first time.</div>':s.fb==='n'?`<div class="wtoast">Sent to ${c.own} with your question and the card you saw. No new ticket form, and the owner replies here.</div>`:''}</div>`;
  if(!q&&!s.sel)b+=`<p class="meta">50 cards in the pilot, each with a named owner. A card past its review date is hidden until the owner re-confirms it.</p>`;
@@ -244,10 +244,10 @@ function rAns(){const s=st.ans;const q=s.q.trim().toLowerCase();
 /* ---------- 4 manager ---------- */
 function rMgr(){const s=st.mgr;
  const J=[
-  {id:'priya',n:'Priya Sharma',t:'j',ev:'Joining · day 1 Mon 7 Dec',r:5,of:7,risk:false,next:'Next: Bank & UAN · Payroll · due 12 Dec',act:null},
+  {id:'priya',n:'Ayushi Sharma',t:'j',ev:'Joining · day 1 Mon 7 Dec',r:5,of:7,risk:false,next:'Next: Bank & UAN · Payroll · due 12 Dec',act:null},
   {id:'rahul',n:'Rahul Verma',t:'j',ev:'Joining · day 1 Mon 14 Dec',r:3,of:7,risk:true,next:'At risk: laptop not allocated · IT (Vikram) · due 10 Dec',act:['Nudge IT','nudge']},
   {id:'neha',n:'Neha Iyer',t:'l',ev:'Leaving · last day Thu 31 Dec',r:1,of:8,risk:true,next:'At risk: knowledge handover not scheduled · You · due 24 Dec',act:['Schedule handover','mine']},
-  {id:'swipe',n:'Priya Sharma',t:'e',ev:'Attendance fix · Tue 15 Dec',r:1,of:2,risk:false,next:'Waiting for your approval in T&A · cut-off Sun 20 Dec',act:['Approve in T&A','ta']}];
+  {id:'swipe',n:'Ayushi Sharma',t:'e',ev:'Attendance fix · Tue 15 Dec',r:1,of:2,risk:false,next:'Waiting for your approval in T&A · cut-off Sun 20 Dec',act:['Approve in T&A','ta']}];
  const list=J.filter(j=>s.filter==='all'||j.risk);
  let b=`<h2>My team's journeys</h2><div class="sub">9 reports · Claims operations, Hyderabad</div><div class="kpis"><div class="kpi"><b>4</b><span>open journeys</span></div><div class="kpi"><b style="color:var(--ambdk)">${J.filter(j=>j.risk&&!s.nudged[j.id]).length}</b><span>at risk now</span></div><div class="kpi"><b>6</b><span>follow-ups this month (was 14)</span></div></div><div class="tabs2"><button aria-pressed="${s.filter==='all'}" data-a="mf" data-v="all">All</button><button aria-pressed="${s.filter==='risk'}" data-a="mf" data-v="risk">At risk</button><button disabled style="opacity:.55">Approvals queue · Release 2</button></div>`;
  for(const j of list){const done=s.nudged[j.id];
@@ -264,6 +264,7 @@ function rLeave(){const s=st.leave;
  let h=`<div class="sbar"><span>${s.after?'11:40':'16:05'}</span><span>5G ▮▮▮</span></div><div class="ph" style="background:linear-gradient(120deg,#2A0569,#794CFF)"><b>Your leaving journey</b><span>${s.after?'Verified link · no company login needed':'Last day: Thu 31 Dec'}</span></div><div class="body"><div class="seg" role="group" aria-label="When"><button aria-pressed="${!s.after}" data-a="lafter" data-v="0">Before last day</button><button aria-pressed="${s.after}" data-a="lafter" data-v="1">After exit</button></div>`;
  h+=`<div class="legal"><b>Legal clock · final wages</b><br>${s.after?'Paid on Mon 4 Jan, inside the 2-working-day window.':'Due within 2 working days of your last day: by Mon 4 Jan.'}<div class="bar"><i style="width:${s.after?100:15}%"></i></div></div><div class="prog"><span>${done} of ${steps.length} done</span></div>`;
  for(const x of steps){h+=`<button class="row ${x[2]==='w'?'wait':''}" ${x[3]?'data-a="lslot"':'disabled'}>${dot(x[2],x[2]==='ok'?'✓':x[2]==='w'?'…':'·')}<span><b>${x[0]}</b><small class="${x[3]&&!s.slot?'cta':''}">${x[1]}</small></span></button>`}
+ if(s.after)h+=s.fb?`<div class="det" style="margin-top:4px"><b>Thank you.</b> Your answers go to the monthly journey council, which updates the leaving steps for the next cohort.</div>`:`<div class="det" style="margin-top:4px"><b>2 quick questions</b><br>Did you have to chase anyone after your last day?<div style="display:flex;gap:6px;margin-top:6px"><button class="btn sm ghost" data-a="lfb" data-v="y">Yes</button><button class="btn sm ghost" data-a="lfb" data-v="n">No</button></div></div>`;
  h+=`</div><div class="foot"><button class="btn full">Talk to a person</button></div>`;
  if(s.modal)h+=`<div class="modal"><div class="sheet"><span class="sys">IT ASSET SYSTEM · opened from your journey</span><h3>Pick a return slot</h3><p style="margin:2px 0 8px;font-size:13px">Laptop and badge at the 4th-floor IT desk, Hyderabad.</p>${['Wed 30 Dec, 3pm','Thu 31 Dec, 11am','Thu 31 Dec, 2pm'].map(t=>`<button class="btn ghost full" style="margin-bottom:6px" data-a="lbook" data-v="${t}">${t}</button>`).join('')}</div></div>`;
  return phoneWrap(h)}
@@ -273,7 +274,7 @@ function rOwn(){const s=st.own;
  let b=`<h2>HR operations · steps I own</h2><div class="sub">Hyderabad pilot site · week 14</div><div class="tabs2"><button aria-pressed="${s.tab==='steps'}" data-a="otab" data-v="steps">My steps</button><button aria-pressed="${s.tab==='tpl'}" data-a="otab" data-v="tpl">Journey template</button></div>`;
  if(s.tab==='steps'){b+=`<div class="kpis"><div class="kpi"><b>91%</b><span>HR steps on time</span></div><div class="kpi"><b>14</b><span>misrouted tickets this week (was 41)</span></div><div class="kpi"><b>2</b><span>hand-offs waiting on IT</span></div></div><div class="scroll"><table><thead><tr><th>Step HR owns</th><th class="n">Open</th><th class="n">Due this week</th><th class="n">On time</th><th>Backup</th></tr></thead><tbody>${[['Offer & documents',12,5,'92%','Divya'],['Resignation acceptance',3,3,'100%','Divya'],['Relieving & experience letters',4,2,'88%','Sameer'],['Exit interview',3,1,'100%','Sameer']].map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${r[2]}</td><td class="n">${r[3]}</td><td>${r[4]}</td></tr>`).join('')}</tbody></table></div><p class="meta" style="margin-top:10px">Steps owned by IT, Admin, Payroll and L&D are not listed here: each function sees and works only its own steps, in its own system.</p>`}
  else{const T=[['Offer & documents','HR',s.offset,true],['Laptop & access','IT','D-5',false],['Badge & seat','Admin','D-3',false],['Night cab','Admin','D-2',false],['Day-1 learning plan','L&D','D-1',false],['Bank & UAN details','Payroll','D+5',false],['Background check','Vendor via HR','D-5',true]];
-  b+=`<div class="sub"><b>Joining journey · template v3</b> · agreed by the journey council on 12 Nov</div><div class="scroll"><table><thead><tr><th>Step</th><th>Owner</th><th>Due (from day 1)</th></tr></thead><tbody>${T.map((r,i)=>`<tr><td>${r[0]}</td><td><span class="tag ${r[3]?'t-j':'t-g'}">${r[1]}</span></td><td>${r[3]&&i===0?`<select data-a="ooff" aria-label="Due date for offer and documents" style="width:auto;font-size:14px;padding:4px 8px">${['D-14','D-10','D-7'].map(o=>`<option ${o===s.offset?'selected':''}>${o}</option>`).join('')}</select>`:r[3]?r[2]:`🔒 ${r[2]} <span style="color:#77718a;font-size:12px">owned by ${r[1]}</span>`}</td></tr>`).join('')}</tbody></table></div><p class="meta" style="margin-top:10px">HR edits HR's steps. A change to another team's step, or a new step, goes to the monthly journey council.</p>`;
+  b+=`<div class="sub"><b>Joining journey · template v3</b> · agreed by the journey council on 12 Nov</div><div class="scroll"><table><thead><tr><th>Step</th><th>Owner</th><th>Due (from day 1)</th></tr></thead><tbody>${T.map((r,i)=>`<tr><td>${r[0]}</td><td><span class="tag ${r[3]?'t-j':'t-g'}">${r[1]}</span></td><td>${r[3]&&i===0?`<select data-a="ooff" aria-label="Due date for offer and documents" style="width:auto;font-size:14px;padding:4px 8px">${['D-14','D-10','D-7'].map(o=>`<option ${o===s.offset?'selected':''}>${o}</option>`).join('')}</select>`:r[3]?r[2]:`🔒 ${r[2]} <span style="color:#77718a;font-size:12px">owned by ${r[1]}</span>`}</td></tr>`).join('')}</tbody></table></div><div class="retired">Changed after feedback in v3: night cab confirmation moved to D-2, after joiners said a day's notice was too late.</div><p class="meta" style="margin-top:10px">HR edits HR's steps. A change to another team's step, or a new step, goes to the monthly journey council.</p>`;
   if(s.toast)b+=`<div class="wtoast">${s.toast}</div>`}
  return deskWrap('Journey console · HR operations',['My steps','Template','Reports'],b)}
 
@@ -312,10 +313,11 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
   case 'apick':A.sel=v;A.q=CARDS.find(c=>c.id===v).t;A.fb=null;break;
   case 'afb':A.fb=v;break;
   case 'mf':M.filter=v;break;
-  case 'mact':{const k=t.dataset.k;M.nudged[v]=k==='nudge'?'Nudged IT':k==='mine'?'Handover set for Wed 24 Dec':'Approved in T&A';toast(M,k==='nudge'?'Nudge sent to Vikram in IT with Rahul\'s step, due date and day 1. You will see the update here; no email chain.':k==='mine'?'Handover meeting booked. Neha\'s card now shows it.':'Opened T&A and approved. Priya\'s allowance is protected.');break}
+  case 'mact':{const k=t.dataset.k;M.nudged[v]=k==='nudge'?'Nudged IT':k==='mine'?'Handover set for Wed 24 Dec':'Approved in T&A';toast(M,k==='nudge'?'Nudge sent to Vikram in IT with Rahul\'s step, due date and day 1. You will see the update here; no email chain.':k==='mine'?'Handover meeting booked. Neha\'s card now shows it.':'Opened T&A and approved. Ayushi\'s allowance is protected.');break}
   case 'lafter':L.after=v==='1';break;
   case 'lslot':L.modal=true;break;
   case 'lbook':L.slot=v;L.modal=false;break;
+  case 'lfb':L.fb=v;break;
   case 'otab':O.tab=v;break;
   default:return}
  render()});

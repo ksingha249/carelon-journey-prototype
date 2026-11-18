@@ -10,12 +10,12 @@ Prototype for the case study *Reimagining the Employee Experience* (Carelon Glob
 
 Seven screens, matching the case deck:
 
-1. Priya · Joining journey (phone)
-2. Priya · Missed-swipe alert (phone)
-3. Arjun · Answer cards and targeted comms (desktop)
-4. Meera · Manager view of team journeys (desktop)
+1. Ayushi · Joining journey (phone)
+2. Ayushi · Missed-swipe alert (phone)
+3. Pritam · Answer cards (desktop)
+4. Shruti · Manager view of team journeys (desktop)
 5. Neha · Leaving journey with legal wage clock (phone)
-6. Rakesh · Function owner console (desktop)
+6. Umesh · Function owner console (desktop)
 7. Impact · North Star and guardrails (desktop)
 
 Each screen sits beside a panel showing the persona's experience today versus with the journey layer, the features on screen (with MoSCoW and RICE), and the metric each feature moves.
