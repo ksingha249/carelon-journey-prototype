@@ -28,14 +28,15 @@ nav{display:flex;gap:4px;overflow-x:auto;margin-top:16px;padding-bottom:0}
 nav button{flex:none;border:0;background:rgba(255,255,255,.12);color:#fff;padding:10px 16px 12px;border-radius:12px 12px 0 0;font-size:14px;font-weight:600;min-height:44px;text-align:left}
 nav button small{display:block;font-weight:500;opacity:.75;font-size:12px}
 nav button[aria-selected=true]{background:var(--bg);color:var(--p)}
+main.wide{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}
 main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;padding:24px max(4vw,16px);max-width:1360px;margin:0 auto}
-@media(max-width:900px){main{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){main,main.wide{grid-template-columns:minmax(0,1fr)}}
 .stage{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
 .stagebar{width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--mut)}
 .chan{display:inline-flex;align-items:center;gap:6px;background:var(--lav);color:var(--p);font-weight:600;padding:5px 12px;border-radius:99px;font-size:13px}
 /* phone */
-.phone{width:min(340px,100%);background:#1e1830;border-radius:40px;padding:12px;box-shadow:0 18px 40px rgba(42,5,105,.28)}
-.scr{background:#fff;color:#1f1830;border-radius:30px;overflow:hidden;height:620px;display:flex;flex-direction:column;position:relative}
+.phone{width:min(364px,100%);background:#1e1830;border-radius:40px;padding:12px;box-shadow:0 18px 40px rgba(42,5,105,.28)}
+.scr{background:#fff;color:#1f1830;border-radius:30px;overflow:hidden;aspect-ratio:393/852;display:flex;flex-direction:column;position:relative}
 .sbar{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:10px 20px 4px}
 .ph{background:linear-gradient(120deg,var(--p),var(--pdk));color:#fff;padding:14px 18px}
 .ph b{display:block;font-size:17px}.ph span{font-size:13px;opacity:.9}
@@ -70,12 +71,12 @@ label.f{display:block;font-size:12px;font-weight:700;color:#5e5970;margin:8px 0 
 .seg{display:flex;background:#efeaf9;border-radius:10px;padding:3px;margin-bottom:10px}.seg button{flex:1;border:0;background:none;border-radius:8px;padding:7px;font-size:13px;font-weight:700;color:#5e5970;min-height:36px}.seg button[aria-pressed=true]{background:#fff;color:var(--p);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 /* desktop */
 .desk{width:100%;background:#1e1830;border-radius:16px;padding:10px 10px 14px;box-shadow:0 18px 40px rgba(42,5,105,.22)}
-.win{background:#fff;color:#1f1830;border-radius:8px;overflow:hidden;min-height:560px;display:flex;flex-direction:column}
+.win{background:#fff;color:#1f1830;border-radius:8px;overflow:hidden;aspect-ratio:16/10;display:flex;flex-direction:column}
 .wtop{display:flex;align-items:center;gap:8px;background:#f1eef8;padding:8px 12px;font-size:12px;color:#5e5970}.wtop i{width:10px;height:10px;border-radius:50%;background:#d6d0e6}
-.wbody{display:grid;grid-template-columns:150px minmax(0,1fr);flex:1}
+.wbody{display:grid;grid-template-columns:130px minmax(0,1fr);flex:1;min-height:0}
 @media(max-width:600px){.wbody{grid-template-columns:minmax(0,1fr)}.side{display:none}}
 .side{background:#2A0569;color:#fff;padding:14px 10px;font-size:13px}.side div{padding:7px 9px;border-radius:8px;margin-bottom:3px;opacity:.75}.side div.on{background:rgba(255,255,255,.16);opacity:1;font-weight:700}
-.wmain{padding:16px;overflow:auto}
+.wmain{padding:14px 16px;overflow:auto;min-height:0;font-size:14px}
 .wmain h2{font-size:20px;margin:0 0 2px}.wmain .sub{font-size:13px;color:#5e5970;margin-bottom:12px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
 .kpi{background:#f7f4fe;border-radius:12px;padding:10px}.kpi b{display:block;font-size:22px;color:var(--p)}.kpi span{font-size:12px;color:#5e5970}
@@ -182,7 +183,7 @@ const SC=[
  {id:'owner',tab:'Umesh · Function owner',sub:'Compact',chan:'Owner console',dev:'desk',ini:'U',name:'Umesh, 41',role:'HR operations lead · owns HR\'s steps',
   bef:['Gets tickets meant for other teams','Blamed when day 1 fails for any reason','No view of hand-offs to IT or Admin'],
   aft:['Sees only the steps HR owns, with due dates','Edits HR\'s steps; other teams\' steps are locked','Hand-off delays are visible, so blame is not'],
-  feats:[['Journey compact','Each function keeps the "how"; owners and backups named','Must','base'],['Journey templates','Steps agreed by the council','Must','base']],
+  feats:[['Journey compact','Each function keeps the "how"; owners and backups named','Must','base'],['Journey templates','Steps updated by the council from feedback','Must','base']],
   mets:[['Improving','inputs right first time'],['41 → 14','misrouted tickets a week (sample)']],
   tryit:'Switch to Journey template and change the due date of HR\'s own step. Try an IT step: it is locked.'},
  {id:'impact',tab:'Impact · North Star',sub:'Gate',chan:'Pilot read-out, month 6',dev:'desk',ini:'★',name:'Pilot dashboard',role:'What the sponsor reviews at weeks 24–26',
@@ -216,9 +217,9 @@ function rJoin(){const s=st.join;
    if(r[0]==='bank'&&!s.bank)h+=`<button class="btn sm" data-a="jbankopen">Enter in Payroll's form</button>`;
    if(r[0]==='bg'&&!s.bg)h+=`<button class="btn sm ghost" data-a="jbg">Simulate: vendor clears check</button>`;
    h+=`</div></div>`}}
- h+=`</div><div class="foot"><button class="btn full" data-a="jtalk">Talk to a person</button></div>`;
+ h+=`</div><div class="foot"><button class="btn full" data-a="jtalk">Talk to your onboarding executive</button></div>`;
  if(s.modal==='bank')h+=`<div class="modal"><div class="sheet"><span class="sys">PAYROLL SYSTEM · not the journey layer</span><h3>Salary account and UAN</h3><label class="f" for="acc">Bank account number</label><input class="inp" id="acc" value="•••• •••• 4417" readonly><label class="f" for="ifsc">IFSC</label><input class="inp" id="ifsc" value="HDFC0001234" readonly><label class="f" for="uan">UAN</label><input class="inp" id="uan" value="1009 •••• 2231" readonly><div style="display:flex;gap:8px;margin-top:12px"><button class="btn ghost" data-a="jclose">Cancel</button><button class="btn" style="flex:1" data-a="jbank">Submit to Payroll</button></div></div></div>`;
- if(s.modal==='talk')h+=`<div class="modal"><div class="sheet"><span class="sys">ONBOARDING DESK · HYDERABAD</span><h3>Shalini R. is on shift until 2am</h3><p style="margin:4px 0 10px">The desk sees your whole journey, chases the owner of any late step and replies within the shift. It never does a function's step itself.</p><button class="btn full" data-a="jclose">Message the desk on Teams</button></div></div>`;
+ if(s.modal==='talk')h+=`<div class="modal"><div class="sheet"><span class="sys">YOUR ONBOARDING EXECUTIVE · HYDERABAD</span><h3>Shalini R. is on shift until 2am</h3><p style="margin:4px 0 10px">Shalini sees your whole joining journey, chases the owner of any late step and replies within the shift. She never does a function's step herself.</p><button class="btn full" data-a="jclose">Message Shalini on Teams</button></div></div>`;
  if(s.toast)h+=`<div class="toast">${s.toast}</div>`;
  return phoneWrap(h)}
 
@@ -244,7 +245,7 @@ function rAns(){const s=st.ans;const q=s.q.trim().toLowerCase();
 /* ---------- 4 manager ---------- */
 function rMgr(){const s=st.mgr;
  const J=[
-  {id:'priya',n:'Ayushi Sharma',t:'j',ev:'Joining · day 1 Mon 7 Dec',r:5,of:7,risk:false,next:'Next: Bank & UAN · Payroll · due 12 Dec',act:null},
+  {id:'ayushi',n:'Ayushi Sharma',t:'j',ev:'Joining · day 1 Mon 7 Dec',r:5,of:7,risk:false,next:'Next: Bank & UAN · Payroll · due 12 Dec',act:null},
   {id:'rahul',n:'Rahul Verma',t:'j',ev:'Joining · day 1 Mon 14 Dec',r:3,of:7,risk:true,next:'At risk: laptop not allocated · IT (Vikram) · due 10 Dec',act:['Nudge IT','nudge']},
   {id:'neha',n:'Neha Iyer',t:'l',ev:'Leaving · last day Thu 31 Dec',r:1,of:8,risk:true,next:'At risk: knowledge handover not scheduled · You · due 24 Dec',act:['Schedule handover','mine']},
   {id:'swipe',n:'Ayushi Sharma',t:'e',ev:'Attendance fix · Tue 15 Dec',r:1,of:2,risk:false,next:'Waiting for your approval in T&A · cut-off Sun 20 Dec',act:['Approve in T&A','ta']}];
@@ -265,8 +266,9 @@ function rLeave(){const s=st.leave;
  h+=`<div class="legal"><b>Legal clock · final wages</b><br>${s.after?'Paid on Mon 4 Jan, inside the 2-working-day window.':'Due within 2 working days of your last day: by Mon 4 Jan.'}<div class="bar"><i style="width:${s.after?100:15}%"></i></div></div><div class="prog"><span>${done} of ${steps.length} done</span></div>`;
  for(const x of steps){h+=`<button class="row ${x[2]==='w'?'wait':''}" ${x[3]?'data-a="lslot"':'disabled'}>${dot(x[2],x[2]==='ok'?'✓':x[2]==='w'?'…':'·')}<span><b>${x[0]}</b><small class="${x[3]&&!s.slot?'cta':''}">${x[1]}</small></span></button>`}
  if(s.after)h+=s.fb?`<div class="det" style="margin-top:4px"><b>Thank you.</b> Your answers go to the monthly journey council, which updates the leaving steps for the next cohort.</div>`:`<div class="det" style="margin-top:4px"><b>2 quick questions</b><br>Did you have to chase anyone after your last day?<div style="display:flex;gap:6px;margin-top:6px"><button class="btn sm ghost" data-a="lfb" data-v="y">Yes</button><button class="btn sm ghost" data-a="lfb" data-v="n">No</button></div></div>`;
- h+=`</div><div class="foot"><button class="btn full">Talk to a person</button></div>`;
- if(s.modal)h+=`<div class="modal"><div class="sheet"><span class="sys">IT ASSET SYSTEM · opened from your journey</span><h3>Pick a return slot</h3><p style="margin:2px 0 8px;font-size:13px">Laptop and badge at the 4th-floor IT desk, Hyderabad.</p>${['Wed 30 Dec, 3pm','Thu 31 Dec, 11am','Thu 31 Dec, 2pm'].map(t=>`<button class="btn ghost full" style="margin-bottom:6px" data-a="lbook" data-v="${t}">${t}</button>`).join('')}</div></div>`;
+ h+=`</div><div class="foot"><button class="btn full" data-a="ltalk">Talk to your exit executive</button></div>`;
+ if(s.modal==='talk')h+=`<div class="modal"><div class="sheet"><span class="sys">YOUR EXIT EXECUTIVE · HR OPERATIONS</span><h3>Divya K. handles your exit</h3><p style="margin:4px 0 10px">Divya sees every exit step, chases late owners and stays reachable after your last day through this verified link.</p><button class="btn full" data-a="lclose">Message Divya</button></div></div>`;
+ if(s.modal==='slot')h+=`<div class="modal"><div class="sheet"><span class="sys">IT ASSET SYSTEM · opened from your journey</span><h3>Pick a return slot</h3><p style="margin:2px 0 8px;font-size:13px">Laptop and badge at the 4th-floor IT desk, Hyderabad.</p>${['Wed 30 Dec, 3pm','Thu 31 Dec, 11am','Thu 31 Dec, 2pm'].map(t=>`<button class="btn ghost full" style="margin-bottom:6px" data-a="lbook" data-v="${t}">${t}</button>`).join('')}</div></div>`;
  return phoneWrap(h)}
 
 /* ---------- 6 owner ---------- */
@@ -296,7 +298,7 @@ function panel(){const c=SC[cur];
 function render(){const c=SC[cur];
  $('#nav').innerHTML=SC.map((x,i)=>`<button role="tab" aria-selected="${i===cur}" data-a="go" data-v="${i}">${x.tab}<small>${i+1} of ${SC.length}</small></button>`).join('');
  $('#chan').textContent='Channel: '+c.chan;$('#pos').textContent=(c.dev==='phone'?'Phone':'Desktop')+' view';
- $('#dev').innerHTML=R[c.id]();$('#panel').innerHTML=panel()}
+ document.querySelector('main').classList.toggle('wide',c.dev==='desk');$('#dev').innerHTML=R[c.id]();$('#panel').innerHTML=panel()}
 let tt;function toast(obj,msg){obj.toast=msg;clearTimeout(tt);tt=setTimeout(()=>{obj.toast='';render()},4200)}
 function go(i){if(i<0||i>=SC.length)return;cur=i;try{history.replaceState(null,'','#'+SC[i].id)}catch(e){}render();window.scrollTo({top:0,behavior:'smooth'})}
 document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t||t.tagName==='SELECT')return;const a=t.dataset.a,v=t.dataset.v,J=st.join,S=st.swipe,A=st.ans,M=st.mgr,L=st.leave,O=st.own;
@@ -315,7 +317,9 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
   case 'mf':M.filter=v;break;
   case 'mact':{const k=t.dataset.k;M.nudged[v]=k==='nudge'?'Nudged IT':k==='mine'?'Handover set for Wed 24 Dec':'Approved in T&A';toast(M,k==='nudge'?'Nudge sent to Vikram in IT with Rahul\'s step, due date and day 1. You will see the update here; no email chain.':k==='mine'?'Handover meeting booked. Neha\'s card now shows it.':'Opened T&A and approved. Ayushi\'s allowance is protected.');break}
   case 'lafter':L.after=v==='1';break;
-  case 'lslot':L.modal=true;break;
+  case 'lslot':L.modal='slot';break;
+  case 'ltalk':L.modal='talk';break;
+  case 'lclose':L.modal=false;break;
   case 'lbook':L.slot=v;L.modal=false;break;
   case 'lfb':L.fb=v;break;
   case 'otab':O.tab=v;break;
